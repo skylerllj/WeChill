@@ -2,7 +2,7 @@
 //  ViewController.swift
 //  WeChill
 //
-//  Created by Skyler Lewis on 4/26/16.
+//  Created by Skyler Lewis and Noah Finberg on 4/26/16.
 //  Copyright © 2016 Skyler Lewis & Noah Finberg. All rights reserved.
 //
 
