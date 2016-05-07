@@ -13,6 +13,9 @@ class LoginViewController: UIViewController {
     var loginData = Data()
     var mainViewController = MainViewController()
     
+    let defaults = NSUserDefaults.standardUserDefaults()
+    var currentUser = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -29,6 +32,10 @@ class LoginViewController: UIViewController {
     @IBAction func login(sender: UIButton, forEvent event: UIEvent) {
         if shouldPerformSegueWithIdentifier("toMain", sender: sender) {
             //performSegueWithIdentifier("toMain", sender: sender)
+            
+            //get current user from NSUserDefaults
+            currentUser = defaults.stringForKey("username")!
+            print(currentUser)
             
         } else {
             print("wrong")

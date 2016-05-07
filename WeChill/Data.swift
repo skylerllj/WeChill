@@ -13,8 +13,7 @@ class Data {
     var login = [String:String]() // username / password
     var individualPics = [String:String]() // username associated with picture
     var buddies = [String:String]() // buddy1 matched with buddy2
-    
-    
+
 
     init() {
         func addLogin(userName: String, passWord: String) {
@@ -37,6 +36,9 @@ class Data {
     
     func checkPassword(user: String, pass: String) -> Bool {
         if login.indexForKey(user) != nil && login[user] == pass {
+            //setup NSUserDefaults (i.e. save the user's username to persist between sessions)
+            let defaults = NSUserDefaults.standardUserDefaults()
+            defaults.setObject(user, forKey: "username") //puts the current user into NSUserDefaults
             return true
         } else {
             return false
