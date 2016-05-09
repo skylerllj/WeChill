@@ -20,6 +20,7 @@
 		47327EBE1CDD1B04000A9947 /* BuddiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47327EBD1CDD1B04000A9947 /* BuddiesViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		47327EC01CDD1B46000A9947 /* MatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47327EBF1CDD1B46000A9947 /* MatchesViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		47327EC21CDD1B5C000A9947 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47327EC11CDD1B5C000A9947 /* ProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		47327EC41CE0E5CD000A9947 /* Data2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47327EC31CE0E5CD000A9947 /* Data2.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,7 @@
 		47327EBD1CDD1B04000A9947 /* BuddiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuddiesViewController.swift; sourceTree = "<group>"; };
 		47327EBF1CDD1B46000A9947 /* MatchesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesViewController.swift; sourceTree = "<group>"; };
 		47327EC11CDD1B5C000A9947 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		47327EC31CE0E5CD000A9947 /* Data2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +119,7 @@
 				47327EB31CD93864000A9947 /* MainViewController.swift */,
 				47327EC11CDD1B5C000A9947 /* ProfileViewController.swift */,
 				47327EBB1CDD0C58000A9947 /* Data.swift */,
+				47327EC31CE0E5CD000A9947 /* Data2.swift */,
 				47327EAD1CD02FF9000A9947 /* Main.storyboard */,
 				47327E861CCFEF04000A9947 /* Assets.xcassets */,
 				47327E881CCFEF04000A9947 /* LaunchScreen.storyboard */,
@@ -279,6 +282,7 @@
 				47327EBC1CDD0C58000A9947 /* Data.swift in Sources */,
 				47327E801CCFEF04000A9947 /* AppDelegate.swift in Sources */,
 				47327EB01CD933B5000A9947 /* SettingsViewController.swift in Sources */,
+				47327EC41CE0E5CD000A9947 /* Data2.swift in Sources */,
 				47327EC21CDD1B5C000A9947 /* ProfileViewController.swift in Sources */,
 				47327EB41CD93864000A9947 /* MainViewController.swift in Sources */,
 			);

@@ -10,14 +10,19 @@ import UIKit
 
 class LoginViewController: UIViewController {
 
-    var loginData = Data()
+    var loginData = Data2()
     var mainViewController = MainViewController()
+    //var newData = Data2()
     
     let defaults = NSUserDefaults.standardUserDefaults()
     var currentUser = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if defaults.stringForKey("username") != nil {
+            let image1 = UIImage(contentsOfFile: defaults.stringForKey("username")!)
+            lastPic.image = image1
+        }
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -42,6 +47,9 @@ class LoginViewController: UIViewController {
         }
     }
     
+    
+    
+    @IBOutlet weak var lastPic: UIImageView!
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject!) -> Bool {
         let displayAlert = UIAlertController(title: "login error", message: "Please try again", preferredStyle: UIAlertControllerStyle.Alert )
