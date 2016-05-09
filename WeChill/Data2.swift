@@ -9,7 +9,7 @@
 import Foundation
 
 
-class User: NSObject {
+class User: NSObject, NSCoding {
     
     var id: Int
     var userName: String
@@ -28,6 +28,25 @@ class User: NSObject {
         self.photo = photo
         self.favoriteInterest = interest
         self.buddies = []
+    }
+    
+    required convenience init(coder aDecoder: NSCoder) {
+        let id = aDecoder.decodeIntegerForKey("id")
+        let userName = aDecoder.decodeObjectForKey("userName") as! String
+        let photo = aDecoder.decodeObjectForKey("photo") as! String
+        let age = aDecoder.decodeIntegerForKey("age")
+        let favoriteInterest = aDecoder.decodeObjectForKey("favoriteInterest") as! String
+        let password = aDecoder.decodeObjectForKey("password") as! String
+        self.init(id: id, userName: userName, age: age, password: password, photo: photo, interest: favoriteInterest)
+    }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeInteger(id, forKey: "id")
+        aCoder.encodeObject(userName, forKey: "userName")
+        aCoder.encodeObject(photo, forKey: "photo")
+        aCoder.encodeInteger(age, forKey: "age")
+        aCoder.encodeObject(favoriteInterest, forKey: "favoriteInterest")
+        aCoder.encodeObject(password, forKey: "password")
     }
     
     
@@ -103,8 +122,11 @@ class Data2 {
         }
         if loginUser.id != -1 && loginUser.password == pass {
             //setup NSUserDefaults (i.e. save the user's username to persist between sessions)
-            let defaults = NSUserDefaults.standardUserDefaults()
-            defaults.setObject(loginUser.userName, forKey: "username") //puts the current user into NSUserDefaults
+            var defaults = NSUserDefaults.standardUserDefaults()
+            let encodedData = NSKeyedArchiver.archivedDataWithRootObject(loginUser)
+            defaults.setObject(encodedData, forKey: "user")
+            defaults.synchronize()
+//            defaults.setObject(loginUser.userName, forKey: "username") //puts the current user into NSUserDefaults
             return true
         } else {
             return false
