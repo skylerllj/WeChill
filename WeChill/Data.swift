@@ -41,6 +41,7 @@ class Data {
         addIndividualPics("sky", pictureString: "Ebony Ball B&W copy.jpg")
         addBuddies("sky",secondBuddy: "noah")
         addBuddies("beyonce", secondBuddy: "selena")
+        addBuddies("ben", secondBuddy: "thomas")
         print(buddies)
         
     }

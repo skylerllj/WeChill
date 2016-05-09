@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BuddiesViewController: UIViewController {
+class BuddiesViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()

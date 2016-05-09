@@ -9,7 +9,7 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate  {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,5 +26,18 @@ class SettingsViewController: UIViewController {
        ageLabel.text = String(Int(sender.value) + 1)
     }
     
+    @IBAction func selectPicture(sender: UIButton) {
+        let ImagePicker = UIImagePickerController()
+        ImagePicker.delegate = self
+        ImagePicker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
+        self.presentViewController(ImagePicker, animated: true, completion: nil)
+    }
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        
+        previewPicture.image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBOutlet weak var previewPicture: UIImageView!
     @IBOutlet weak var ageLabel: UILabel!
 }
