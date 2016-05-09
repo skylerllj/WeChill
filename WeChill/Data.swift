@@ -13,8 +13,10 @@ class Data {
     var login = [String:String]() // username / password
     var individualPics = [String:String]() // username associated with picture
     var buddies = [String:String]() // buddy1 matched with buddy2
-
-
+    var potentialMatches = [String:Bool]() // holds one buddy pair match to another
+    var actualMatches = [String:String]() // holds the actual matches
+    
+    
     init() {
         func addLogin(userName: String, passWord: String) {
             login[userName] = passWord
@@ -25,12 +27,21 @@ class Data {
         func addBuddies(firstBuddy: String, secondBuddy: String) {
             buddies[firstBuddy] = secondBuddy
         }
+        func addPotentialMatches(buddies1: (String,String), buddies2:(String,String), like:Bool) {
+            
+        }
+        func addActualMatches(buddies1: (String,String), buddies2: (String,String)) {
+    
+        }
         
 
         addLogin("sky",passWord: "password")
         addLogin("noah", passWord: "password1")
         addIndividualPics("noah", pictureString: "NoahF.jpg")
         addIndividualPics("sky", pictureString: "Ebony Ball B&W copy.jpg")
+        addBuddies("sky",secondBuddy: "noah")
+        addBuddies("beyonce", secondBuddy: "selena")
+        print(buddies)
         
     }
     
