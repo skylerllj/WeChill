@@ -36,7 +36,7 @@ class LoginViewController: UIViewController {
     @IBAction func login(sender: UIButton, forEvent event: UIEvent) {
         if shouldPerformSegueWithIdentifier("toMain", sender: sender) {
             //performSegueWithIdentifier("toMain", sender: sender)
-            
+            MusicHelper.sharedHelper.playBackgroundMusic() // starts background music
             //get current user from NSUserDefaults
             let decoded = defaults.objectForKey("user")
             let decodedUser = NSKeyedUnarchiver.unarchiveObjectWithData(decoded! as! NSData) as! User

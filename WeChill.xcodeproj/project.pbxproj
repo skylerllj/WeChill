@@ -21,6 +21,7 @@
 		47327EC01CDD1B46000A9947 /* MatchesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47327EBF1CDD1B46000A9947 /* MatchesViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		47327EC21CDD1B5C000A9947 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47327EC11CDD1B5C000A9947 /* ProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		47327EC41CE0E5CD000A9947 /* Data2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47327EC31CE0E5CD000A9947 /* Data2.swift */; settings = {ASSET_TAGS = (); }; };
+		47327EC61CE25A19000A9947 /* 04 You Gots To Chill.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 47327EC51CE25A19000A9947 /* 04 You Gots To Chill.mp3 */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		47327EBF1CDD1B46000A9947 /* MatchesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchesViewController.swift; sourceTree = "<group>"; };
 		47327EC11CDD1B5C000A9947 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		47327EC31CE0E5CD000A9947 /* Data2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Data2.swift; sourceTree = "<group>"; };
+		47327EC51CE25A19000A9947 /* 04 You Gots To Chill.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "04 You Gots To Chill.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				47327EC11CDD1B5C000A9947 /* ProfileViewController.swift */,
 				47327EBB1CDD0C58000A9947 /* Data.swift */,
 				47327EC31CE0E5CD000A9947 /* Data2.swift */,
+				47327EC51CE25A19000A9947 /* 04 You Gots To Chill.mp3 */,
 				47327EAD1CD02FF9000A9947 /* Main.storyboard */,
 				47327E861CCFEF04000A9947 /* Assets.xcassets */,
 				47327E881CCFEF04000A9947 /* LaunchScreen.storyboard */,
@@ -252,6 +255,7 @@
 				47327EAE1CD02FF9000A9947 /* Main.storyboard in Resources */,
 				47327E8A1CCFEF04000A9947 /* LaunchScreen.storyboard in Resources */,
 				47327E871CCFEF04000A9947 /* Assets.xcassets in Resources */,
+				47327EC61CE25A19000A9947 /* 04 You Gots To Chill.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
