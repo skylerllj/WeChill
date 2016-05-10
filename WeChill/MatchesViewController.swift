@@ -9,10 +9,11 @@
 import UIKit
 
 class MatchesViewController: UITableViewController {
+    var data = Data2()
+    var matchData = MainViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view, typically from a nib.
     }
     

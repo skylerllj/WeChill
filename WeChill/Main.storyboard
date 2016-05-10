@@ -32,7 +32,10 @@
                                         <accessibility key="accessibilityConfiguration" identifier="Pic1Left"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <accessibility key="accessibilityConfiguration" identifier="">
+                                    <bool key="isElement" value="NO"/>
+                                </accessibility>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="DjV-W2-6dl" firstAttribute="trailing" secondItem="Grk-h1-0hp" secondAttribute="trailing" id="2t7-EG-Ixg"/>
                                     <constraint firstAttribute="trailing" secondItem="Grk-h1-0hp" secondAttribute="trailing" constant="28" id="36J-or-wGi"/>
@@ -53,6 +56,11 @@
                                         <exclude reference="vdv-Bb-6Vm"/>
                                     </mask>
                                 </variation>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="ckA-KB-7pF" appends="YES" id="97c-Ro-83L"/>
+                                    <outletCollection property="gestureRecognizers" destination="Dx5-Yf-frX" appends="YES" id="Vf7-hv-Rxr"/>
+                                    <outletCollection property="gestureRecognizers" destination="Dx5-Yf-frX" appends="YES" id="C19-oT-Tuq"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -71,11 +79,18 @@
                     </navigationItem>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
+                        <outlet property="imageContainer" destination="ydh-SH-tHh" id="Cxy-rU-m7A"/>
                         <outlet property="leftPic" destination="Grk-h1-0hp" id="9Kh-gD-C2I"/>
                         <outlet property="rightPic" destination="DjV-W2-6dl" id="ycz-qt-B0z"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5AV-Rn-ens" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <swipeGestureRecognizer direction="left" id="ckA-KB-7pF">
+                    <connections>
+                        <action selector="chooser:" destination="5hT-um-O1W" id="RK1-Le-uaL"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="Dx5-Yf-frX"/>
             </objects>
             <point key="canvasLocation" x="1158" y="-1248"/>
         </scene>
@@ -135,13 +150,6 @@
                                 <color key="textColor" red="0.043137256059999997" green="0.78431379800000001" blue="0.8980392814" alpha="1" colorSpace="deviceRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uHl-9l-sTJ">
-                                <rect key="frame" x="474" y="28" width="106" height="30"/>
-                                <state key="normal" title="Logout"/>
-                                <connections>
-                                    <segue destination="cWS-LY-DEy" kind="showDetail" id="zJJ-MV-9Nn"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DFR-oL-rJN">
                                 <rect key="frame" x="20" y="175" width="121" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -290,6 +298,7 @@
                         <outlet property="ageLabel" destination="pAZ-7W-UD0" id="Fpb-RH-orE"/>
                         <outlet property="favoriteInterest" destination="U1N-W7-V5E" id="Cqo-HQ-0zH"/>
                         <outlet property="picker" destination="Dd5-iO-BQr" id="ZSQ-u7-FAt"/>
+                        <outlet property="sliderValue" destination="NQx-xT-FNV" id="bou-pg-tCa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="k1z-la-dKZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -349,7 +358,7 @@
                         <viewControllerLayoutGuide type="top" id="4ca-gd-55a"/>
                         <viewControllerLayoutGuide type="bottom" id="OCy-hU-b8J"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Xif-NY-dRi">
+                    <view key="view" contentMode="redraw" id="Xif-NY-dRi">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -429,64 +438,8 @@
                         <sections>
                             <tableViewSection headerTitle="Matches" id="n6p-t6-11L">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="123" id="jUV-7g-Pq6">
-                                        <rect key="frame" x="0.0" y="114" width="600" height="123"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jUV-7g-Pq6" id="hal-6o-So7">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="122"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skyler" translatesAutoresizingMaskIntoConstraints="NO" id="dtJ-aa-mfM">
-                                                    <rect key="frame" x="8" y="10" width="98" height="102"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="98" id="fzu-mh-tNX"/>
-                                                    </constraints>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noah" translatesAutoresizingMaskIntoConstraints="NO" id="Dgp-cr-fpz">
-                                                    <rect key="frame" x="114" y="10" width="98" height="102"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="amber" translatesAutoresizingMaskIntoConstraints="NO" id="IBI-m9-7qR">
-                                                    <rect key="frame" x="494" y="10" width="98" height="102"/>
-                                                </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&amp;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vcd-DR-4Z2">
-                                                    <rect key="frame" x="259" y="10" width="83" height="102"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="83" id="4KX-L3-ZY2"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="115"/>
-                                                    <color key="textColor" red="0.043137256059999997" green="0.78431379800000001" blue="0.8980392814" alpha="1" colorSpace="deviceRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sarah" translatesAutoresizingMaskIntoConstraints="NO" id="bpm-YB-W6f">
-                                                    <rect key="frame" x="388" y="10" width="98" height="102"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="98" id="aC9-Jo-MWa"/>
-                                                    </constraints>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="bpm-YB-W6f" firstAttribute="centerY" secondItem="hal-6o-So7" secondAttribute="centerY" id="1XA-A5-2HG"/>
-                                                <constraint firstItem="bpm-YB-W6f" firstAttribute="bottom" secondItem="IBI-m9-7qR" secondAttribute="bottom" id="3lP-t6-LGH"/>
-                                                <constraint firstItem="Vcd-DR-4Z2" firstAttribute="leading" secondItem="Dgp-cr-fpz" secondAttribute="trailing" constant="47" id="4Kf-r6-Mkf"/>
-                                                <constraint firstItem="IBI-m9-7qR" firstAttribute="trailing" secondItem="hal-6o-So7" secondAttribute="trailingMargin" id="8aF-ia-VfN"/>
-                                                <constraint firstItem="Vcd-DR-4Z2" firstAttribute="top" secondItem="bpm-YB-W6f" secondAttribute="top" id="BPI-8j-lVX"/>
-                                                <constraint firstItem="bpm-YB-W6f" firstAttribute="leading" secondItem="Vcd-DR-4Z2" secondAttribute="trailing" constant="46" id="C7K-mW-ich"/>
-                                                <constraint firstItem="bpm-YB-W6f" firstAttribute="top" secondItem="IBI-m9-7qR" secondAttribute="top" id="ECi-je-ANy"/>
-                                                <constraint firstItem="Vcd-DR-4Z2" firstAttribute="bottom" secondItem="bpm-YB-W6f" secondAttribute="bottom" id="NmU-Ew-iU9"/>
-                                                <constraint firstItem="Dgp-cr-fpz" firstAttribute="leading" secondItem="dtJ-aa-mfM" secondAttribute="trailing" constant="8" symbolic="YES" id="VVn-UV-mAd"/>
-                                                <constraint firstItem="dtJ-aa-mfM" firstAttribute="bottom" secondItem="Dgp-cr-fpz" secondAttribute="bottom" id="VmI-n7-aqJ"/>
-                                                <constraint firstItem="dtJ-aa-mfM" firstAttribute="leading" secondItem="hal-6o-So7" secondAttribute="leadingMargin" id="WJO-Yw-uyr"/>
-                                                <constraint firstItem="Vcd-DR-4Z2" firstAttribute="top" secondItem="Dgp-cr-fpz" secondAttribute="top" id="ehM-3A-nlk"/>
-                                                <constraint firstItem="IBI-m9-7qR" firstAttribute="leading" secondItem="bpm-YB-W6f" secondAttribute="trailing" constant="8" symbolic="YES" id="mBQ-mE-PmQ"/>
-                                                <constraint firstItem="dtJ-aa-mfM" firstAttribute="top" secondItem="hal-6o-So7" secondAttribute="topMargin" constant="2" id="nVo-QF-p6r"/>
-                                                <constraint firstItem="Vcd-DR-4Z2" firstAttribute="centerX" secondItem="hal-6o-So7" secondAttribute="centerX" id="nlu-lJ-I0g"/>
-                                                <constraint firstItem="Dgp-cr-fpz" firstAttribute="top" secondItem="dtJ-aa-mfM" secondAttribute="top" id="pco-GD-2sI"/>
-                                                <constraint firstItem="Dgp-cr-fpz" firstAttribute="bottom" secondItem="Vcd-DR-4Z2" secondAttribute="bottom" id="woY-XL-xEq"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="123" id="2uU-fV-YBv">
-                                        <rect key="frame" x="0.0" y="237" width="600" height="123"/>
+                                        <rect key="frame" x="0.0" y="114" width="600" height="123"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2uU-fV-YBv" id="RvO-2R-YwD">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="122"/>
@@ -542,7 +495,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="123" id="8hG-4y-9CM">
-                                        <rect key="frame" x="0.0" y="360" width="600" height="123"/>
+                                        <rect key="frame" x="0.0" y="237" width="600" height="123"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8hG-4y-9CM" id="pUv-Va-JCQ">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="122"/>
@@ -644,12 +597,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="amber" width="1255" height="837"/>
         <image name="ben" width="600" height="459"/>
         <image name="beyonce" width="620" height="538"/>
         <image name="mike" width="420" height="280"/>
         <image name="noah" width="350" height="350"/>
-        <image name="sarah" width="500" height="320"/>
         <image name="selena" width="634" height="1024"/>
         <image name="skyler" width="350" height="350"/>
     </resources>

@@ -18,7 +18,7 @@ class User: NSObject, NSCoding {
     var favoriteInterest: String
     var password: String
     var buddies: [User]
-    var potentialMatches = [Buddy:Bool]()
+    var potentialMatches = [User:Bool]()
     
     init(id: Int, userName: String, age: Int, password: String, photo: String, interest: String) {
         self.id = id
@@ -69,6 +69,9 @@ class Data2 {
     
     var allUsers = [User]()
     
+    var currentUser: User
+    
+    
     init() {
         
         func addUser(user: User) {
@@ -76,6 +79,7 @@ class Data2 {
         }
         
         let sky = User(id: 0, userName: "sky", age: 22, password: "password", photo: "skyler", interest: "Music")
+        currentUser = sky
         let noah = User(id: 1, userName: "noah", age: 22, password: "password1", photo: "noah", interest: "Hiking")
         let beyonce = User(id: 2, userName: "beyonce", age: 25, password: "password", photo: "beyonce", interest: "Music")
         let selena = User(id: 3, userName: "selena", age: 24, password: "password", photo: "selena", interest: "Music")
@@ -98,6 +102,15 @@ class Data2 {
         addUser(amber)
         addUser(sarah)
         
+        beyonce.potentialMatches[sky] = true
+        selena.potentialMatches[sky] = true
+        mike.potentialMatches[sky] = true
+        ben.potentialMatches[sky] = true
+        amber.potentialMatches[sky] = false
+        sarah.potentialMatches[sky] = false
+        
+        
+        
         
         sky.buddies.append(noah)
         noah.buddies.append(sky)
@@ -117,6 +130,7 @@ class Data2 {
         for users in allUsers {
             if users.userName == user {
                 loginUser = users
+                currentUser = loginUser
                 break;
             }
         }
