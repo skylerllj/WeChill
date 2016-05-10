@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import CoreLocation
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, CLLocationManagerDelegate {
+    
+    var locationManager = CLLocationManager()
     
     let data = Data2()
     var count = 0
@@ -62,6 +65,19 @@ class MainViewController: UIViewController {
         self.view.addGestureRecognizer(swipeLeft)
         
         // Do any additional setup after loading the view, typically from a nib.
+        
+        //setup location manager
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self;
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.requestAlwaysAuthorization()
+            locationManager.startUpdatingLocation()
+            print(locationManager.location)
+            print("location services enabled")
+        }
+        else {
+            print("location services disabled")
+        }
     }
     
     
@@ -103,6 +119,16 @@ class MainViewController: UIViewController {
         
         
     }
+    
+    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        print("in location Manager")
+        var userLocation:CLLocation = locations[0] as! CLLocation
+        let long = userLocation.coordinate.longitude
+        let lat = userLocation.coordinate.latitude
+        print("logitude is \(long) and latitude is \(lat)")
+    }
+    
+    
     @IBOutlet weak var rightPic: UIImageView!
     @IBOutlet weak var leftPic: UIImageView!
     
