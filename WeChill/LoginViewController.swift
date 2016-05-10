@@ -15,7 +15,6 @@ class LoginViewController: UIViewController {
     //var newData = Data2()
     
     let defaults = NSUserDefaults.standardUserDefaults()
-    var currentUser = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +38,10 @@ class LoginViewController: UIViewController {
             //performSegueWithIdentifier("toMain", sender: sender)
             
             //get current user from NSUserDefaults
-            currentUser = defaults.stringForKey("username")!
-            print(currentUser)
+            let decoded = defaults.objectForKey("user")
+            let decodedUser = NSKeyedUnarchiver.unarchiveObjectWithData(decoded! as! NSData) as! User
+            var currentUser = decodedUser
+            print("The current user saved in NSUserDefaults is \(currentUser.userName) and that user's favorite interest is \(currentUser.favoriteInterest)")
             
         } else {
             print("wrong")
