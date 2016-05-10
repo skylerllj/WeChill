@@ -11,10 +11,17 @@ import UIKit
 
 class ProfileViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
     
+    var data = Data2()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.picker.dataSource = self;
         self.picker.delegate = self;
+        self.sliderValue.value = Float(data.currentUser.age)
+        ageLabel.text = String(Int(sliderValue.value))
+        favoriteInterest.text = data.currentUser.favoriteInterest
+        var interest = pickerData.indexOf(data.currentUser.favoriteInterest)
+        picker.selectRow(interest!, inComponent: 0, animated: true)
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -40,12 +47,15 @@ class ProfileViewController: UIViewController, UIPickerViewDataSource, UIPickerV
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         favoriteInterest.text = pickerData[row]
+        data.currentUser.favoriteInterest = pickerData[row]
+        print(data.currentUser.favoriteInterest)
     }
     
     @IBAction func ageSlider(sender: UISlider) {
         ageLabel.text = String(Int(sender.value))
     }
     
+    @IBOutlet weak var sliderValue: UISlider! 
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var favoriteInterest: UILabel!
     @IBOutlet weak var picker: UIPickerView!
