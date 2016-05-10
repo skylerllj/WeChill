@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 
 class User: NSObject, NSCoding {
@@ -70,6 +71,7 @@ class Data2 {
     var allUsers = [User]()
     
     var currentUser: User
+    var location = CLLocation()
     
     
     init() {

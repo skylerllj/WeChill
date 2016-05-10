@@ -20,6 +20,7 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        noMoreMatches.hidden = true
         let displayAlert = UIAlertController(title: "No more matches", message: "Please check back later", preferredStyle: UIAlertControllerStyle.Alert )
         displayAlert.addAction(UIAlertAction(title:"dismiss",style: UIAlertActionStyle.Default, handler: nil))
         var user = data.allUsers[0]
@@ -35,14 +36,24 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
         } else {
             rightPic.hidden = true
             leftPic.hidden = true
+            infoTop.hidden = true
+            infoBottom.hidden = true
+            let sad : UIImage = UIImage(named: "sadDog")!
+            noMoreMatches.image = sad
+            noMoreMatches.hidden = false
             self.presentViewController(displayAlert, animated: true, completion: nil)
             print("there are no more matches")
         }
 
         count++
         count++
-        var imageString1 = user.photo
-        var imageString2 = user.buddies.first?.photo
+        let detailsForBottom = "\(user.userName.uppercaseString) , \(user.age) , \(user.favoriteInterest)"
+        let detailsForTop = "\(user.buddies[0].userName.uppercaseString) , \(user.buddies[0].age) , \(user.buddies[0].favoriteInterest)"
+        infoBottom.text = detailsForBottom
+        infoTop.text = detailsForTop
+        
+        let imageString1 = user.photo
+        let imageString2 = user.buddies.first?.photo
         
         let image1 : UIImage = UIImage(named:imageString1)!
         let image2 : UIImage = UIImage(named:imageString2!)!
@@ -54,13 +65,15 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
             self.imageContainer.backgroundColor = UIColor.whiteColor()
             self.leftPic.image = image1
             self.rightPic.image = image2
+            self.infoBottom.text = detailsForBottom
+            self.infoTop.text = detailsForTop
         }
         
-        var swipeRight = UISwipeGestureRecognizer(target: self, action: "chooser:")
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: "chooser:")
         swipeRight.direction = UISwipeGestureRecognizerDirection.Right
         self.view.addGestureRecognizer(swipeRight)
         
-        var swipeLeft = UISwipeGestureRecognizer(target: self, action: "chooser:")
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: "chooser:")
         swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
         self.view.addGestureRecognizer(swipeLeft)
         
@@ -129,6 +142,9 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     
+    @IBOutlet weak var noMoreMatches: UIImageView!
+    @IBOutlet weak var infoTop: UILabel!
+    @IBOutlet weak var infoBottom: UILabel!
     @IBOutlet weak var rightPic: UIImageView!
     @IBOutlet weak var leftPic: UIImageView!
     
