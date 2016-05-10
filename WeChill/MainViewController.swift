@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import AVFoundation
 
 class MainViewController: UIViewController, CLLocationManagerDelegate {
     
@@ -18,8 +19,12 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     var oldUser = [User]()
     var matches = [User]()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        
         noMoreMatches.hidden = true
         let displayAlert = UIAlertController(title: "No more matches", message: "Please check back later", preferredStyle: UIAlertControllerStyle.Alert )
         displayAlert.addAction(UIAlertAction(title:"dismiss",style: UIAlertActionStyle.Default, handler: nil))
@@ -134,12 +139,32 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        print("in location Manager")
         var userLocation:CLLocation = locations[0] as! CLLocation
         let long = userLocation.coordinate.longitude
         let lat = userLocation.coordinate.latitude
-        print("logitude is \(long) and latitude is \(lat)")
     }
+    
+    
+    
+    /*var backgroundMusicPlayer = AVAudioPlayer()
+    
+    func playBackgroundMusic() {
+        //let url = NSBundle.mainBundle().URLForResource("04 You Gots To Chill", withExtension: nil)
+        let url = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("04 You Gots To Chill", ofType: "mp3")!)
+        guard let newURL = url else {
+            print("Could not find file!!!")
+            return
+        }
+        do {
+            backgroundMusicPlayer = try AVAudioPlayer(contentsOfURL: newURL)
+            backgroundMusicPlayer.numberOfLoops = -1
+            backgroundMusicPlayer.prepareToPlay()
+            backgroundMusicPlayer.play()
+        } catch let error as NSError {
+            print(error.description)
+        }
+    }*/
+    
     
     
     @IBOutlet weak var noMoreMatches: UIImageView!
@@ -150,5 +175,22 @@ class MainViewController: UIViewController, CLLocationManagerDelegate {
     
     
     
+}
+
+class MusicHelper {
+    static let sharedHelper = MusicHelper()
+    var audioPlayer: AVAudioPlayer?
+    
+    func playBackgroundMusic() {
+        let aSound = NSURL(fileURLWithPath: NSBundle.mainBundle().pathForResource("04 You Gots To Chill", ofType: "mp3")!)
+        do {
+            audioPlayer = try AVAudioPlayer(contentsOfURL:aSound)
+            audioPlayer!.numberOfLoops = -1
+            audioPlayer!.prepareToPlay()
+            audioPlayer!.play()
+        } catch {
+            print("Cannot play the file")
+        }
+    }
 }
 
